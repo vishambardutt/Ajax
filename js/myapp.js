@@ -1,10 +1,10 @@
-let normalDataButton = document.querySelector(selectors:'#normal-btn');
-normalDataButton = addEventListner (type 'click', listener function () {
+let textButton = document.querySelector(selectors:'#normal-btn');
+textButton = addEventListner (type: 'click', listener: function () {
   //ajax request
  let ajt = new_XMLHttpRequest ();
 
  //request
-ajt.open(metohd:'GET',ulr'Data/Text-data.text' , async: true);
+ajt.open(metohd:'GET',url:'Data/Text-data.text' , async: true);
 
 //send new_XMLHttpRequest
 
