@@ -1,5 +1,6 @@
 let textButton = document.querySelector(selectors:'#text-btn');
-textButton = addEventListner (type: 'click', listener: function () {
+textButton = addEventListener (type: 'click', listener: function () {
+  
   //ajax request
  let ajt = new_XMLHttpRequest ();
 
