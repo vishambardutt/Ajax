@@ -1,27 +1,26 @@
 let textButton = document.querySelector(selectors:'#text-btn');
-textButton = addEventListener (type: 'click', listener: function () {
-  
+textButton.addEventListener (type: 'click', listener: function () {
+
   //ajax request
- let ajt = new_XMLHttpRequest ();
+ let xhr = new XMLHttpRequest ();
 
  //request
-ajt.open(metohd:'GET',url:'Data/Text-data.text' , async: true);
+xhr.open('GET', url:'Data/Text-data.txt' , true);
 
-//send new_XMLHttpRequest
-
-ajt.send();
+//send  request
+xhr.send();
 
 //process
-ajt.onload = () => {
-  if (ajt.status ===200){
-    let data = ajt.responseText;
-    displayNormalData(data);
+xhr.onload = () => {
+  if (xhr.status === 200){
+    let data = xhr.responseText;
+    displayTextData(data);
   }
 }
 });
 
 //display text Data
-let displayNormalData = (data) => {
+let displayTextData = (data) => {
   let htmlTemplate = '<h3>$ (data)</h3>';
   document.querySelector (selectors '#normal-btn').innerHTML = htmlTemplate;
 };
@@ -41,4 +40,4 @@ jsonButton = addEventListner(type 'click', listener function (){
     }
   }
 
-})
+});
