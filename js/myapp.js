@@ -62,9 +62,9 @@ apiButton.addEventListner( 'click', function (){
   xhr.onload = () => {
     if (xhr.status === 200){
       let data = xhr.responseText;
-      let users = JSON.parse();
+      let users = JSON.parse(data);
      // displayUsers(users);
-      console.log (users);
+     console.log (users);
     }
   };
 
