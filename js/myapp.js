@@ -1,43 +1,84 @@
-let textButton = document.querySelector(selectors:'#text-btn');
-textButton.addEventListener (type: 'click', listener: function () {
 
+let textButton = document.querySelector ('#text-btn');
+textButton.addEventListener ('click',  function () {
   //ajax request
  let xhr = new XMLHttpRequest ();
-
  //request
-xhr.open('GET', url:'Data/Text-data.txt' , true);
-
-//send  request
+xhr.open('GET', './Data/Text-data.txt', true);
+//send new_XMLHttpRequest
 xhr.send();
-
 //process
 xhr.onload = () => {
-  if (xhr.status === 200){
+  if (xhr.status ===200){
     let data = xhr.responseText;
-    displayTextData(data);
+     displayTextData(data);
+ // console.log(data);
   }
 }
 });
 
 //display text Data
 let displayTextData = (data) => {
-  let htmlTemplate = '<h3>$ (data)</h3>';
-  document.querySelector (selectors '#normal-btn').innerHTML = htmlTemplate;
+  let htmlTemplate = `<h5>${data}</h5>`;
+  document.querySelector ( '#text-card').innerHTML = htmlTemplate;
 };
 
-
-//JSON data College
-
-let jsonButton = document.querySelector (selectors: '#json-btn');
-jsonButton = addEventListner(type 'click', listener function (){
-  let xhr = new new_XMLHttpRequest ();
-  xhr.open (metohd: 'GET', url: 'Data/user-data.json', async: true);
-  xhr.open ();
+//JSON data 
+let jsonButton = document.querySelector ( '#json-btn');
+jsonButton.addEventListner('click', function (){
+  let xhr = new new XMLHttpRequest ();
+  xhr.open ('GET', './Data/user-data.json', true);
+  xhr.send ();
   xhr.onload = () => {
     if (xhr.status === 200){
       let data = xhr.responseText;
-      console.log(data);
+       let udata = JSON.parse (data);
+     displayJsonData(udata);
+     //console.log(udata);
+      
     }
-  }
+  };
 
 });
+
+let displayJSONData = (udata) => {
+  let htmlTemplate = '';
+  htmlTemplate = `<ul  class="list-group">
+                    <li class="list-group-item">Name ${udata.name}</li>
+                    <li class="list-group-item">Age ${udata.age}</li>
+                    <li class="list-group-item">Adress ${udata.address}</li>
+                    <li class="list-group-item">Accupation ${udata.accupation}</li>
+                  </ul> `;
+
+  document.querySelector ('#json-card').innerHTML = htmlTemplate;
+};
+
+
+let apiButton = document.querySelector ( '#api-btn');
+apiButton.addEventListner( 'click', function (){
+  let xhr = new new XMLHttpRequest ();
+  xhr.open ('GET', 'https://jsonplaceholder.typicode.com/users',  true);
+  xhr.send ();
+  xhr.onload = () => {
+    if (xhr.status === 200){
+      let data = xhr.responseText;
+      let users = JSON.parse();
+     // displayUsers(users);
+      console.log (users);
+    }
+  };
+
+});
+
+let displayUsers = (users) => {
+  let htmlTemplate = '';
+  for (let user of users){
+    htmlTemplate = `<ul class="list-group mt-1">
+                      <li class="list-group-item">NAME: ${users.name} </li>
+                      <li class="list-group-item">Age: ${users.age}</li>
+                      <li class="list-group-item">Adress: ${users.address}</li>
+                      <li class="list-group-item">Occupation:  ${users.occupation}</li>
+                      </ul>`;
+  }
+  document.querySelector ( '#api-card').innerHTML = htmlTemplate;
+};

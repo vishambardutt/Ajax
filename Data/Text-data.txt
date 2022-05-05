@@ -1,1 +1,2 @@
 Hi I am form a Text Data.
+this is  ajax for normal data.
