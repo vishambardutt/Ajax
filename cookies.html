@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+        function Writecookies(){
+            if (document.myForm.customer.value == "")
+            {
+                alert ("Enter some value!");
+                return;
+            }
+           let  cookiesvalue = escape(document.myForm.customer.value) + ";";
+            document.cookies = "name" + cookiesvalue;
+            document.write ("Setting Cookies: " + "name" + cookiesvalue);
+        }
+    </script>
+  </head>
+  <body>
+    <form name="myForm" action="">
+    Enter Name <input type="text" name="customer"/>
+    <input type ="button" value="Set Cookies" onclick ="Writecookies();"/>
+
+    </form>
+    
+<script>
+var fontSize = 1;
+window.addEventListener("click", function(e) {
+    var href = e.target.getAttribute("href");
+    if(href) {
+        location.href = href + "?fontSize=" + fontSize;
+        e.preventDefault();
+     }
+})
+window.onload = function(){
+  var url = new URL(window.location.href);
+  var value = url.searchParams.get("fontSize");
+  if(value != null){
+    fontSize = parseFloat(value);
+    document.getElementById("content").style.fontSize = fontSize + "em";
+  }
+}
+</script>
+    
+  </body>
+</html>
