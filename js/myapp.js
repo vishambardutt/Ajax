@@ -1,46 +1,24 @@
 
+
 let textButton = document.querySelector('#text-btn');
 textButton.addEventListener('click', function () {
-  //ajax request
   let xhr = new XMLHttpRequest();
-  //request
   xhr.open('GET', './Data/Text-data.txt', true);
-  //send new_XMLHttpRequest
   xhr.send();
-  //process
   xhr.onload = () => {
     if (xhr.status === 200) {
       let data = xhr.responseText;
       displayTextData(data);
-      
     }
   };
 });
 
 //display text Data
 let displayTextData = (data) => {
-  let htmlTemplate = `<h5>${data}</h5>`;
+  let htmlTemplate = `<p>${data}</p>`;
   document.querySelector('#text-card').innerHTML = htmlTemplate;
 };
 
-//JSON data 
-/*let jsonButton = document.querySelector('#json-btn');
-jsonButton.addEventListner('click', function () {
-  /*let xhr = new XMLHttpRequest();
-  xhr.open('GET', '/Data/userdata.json', true);
-  xhr.send();
-  xhr.onload = () => {
-    if (xhr.status === 200) {
-      let data = xhr.responseText;
-      let udata = JSON.parse(data);
-      displayJsonData(udata);
-    console.log(click);
-
-   }
-  };
-
-});
-*/
 let jsonButton = document.querySelector('#json-btn');
 jsonButton.addEventListener('click', function () {
   //ajax request
@@ -55,7 +33,7 @@ jsonButton.addEventListener('click', function () {
       let data = xhr.responseText;
       let jsonData = JSON.parse(data);
       displayJSONData(jsonData);
-      
+
     }
   };
 });
@@ -73,22 +51,6 @@ let displayJSONData = (jsonData) => {
   document.querySelector('#json-card').innerHTML = htmlTemplate;
 };
 
-/*
-let apiButton = document.querySelector('#api-btn');
-apiButton.addEventListner('click', function () {
-  let xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://jsonplaceholder.typicode.com/users', true);
-  xhr.send();
-  xhr.onload = () => {
-    if (xhr.status === 200) {
-      let data = xhr.responseText;
-      let users = JSON.parse(data);
-      displayUsers(users);
-     // console.log(users);
-    }
-  };
-
-});*/
 let apiButton = document.querySelector('#api-btn');
 apiButton.addEventListener('click', function () {
   //ajax request
@@ -102,9 +64,9 @@ apiButton.addEventListener('click', function () {
     if (xhr.status === 200) {
       let data = xhr.responseText;
       let users = JSON.parse(data);
-       displayJuserData(users);
- //   console.log(users);
-      
+      displayJuserData(users);
+      //console.log(users);
+
     }
   };
 });
@@ -116,9 +78,9 @@ let displayJuserData = (users) => {
                       <li class="list-group-item">Name: ${user.name}</li>
                       <li class="list-group-item">User Name: ${user.username}</li>
                       <li class="list-group-item">Email: ${user.email}</li>
-                      <li class="list-group-item">Address: ${user.address.city}</li>
-                     
-                                          </ul>`;
+                      <li class="list-group-item">Street: ${user.address.street}</li>
+                    </ul>`;
+
   }
   document.querySelector('#api-card').innerHTML = htmlTemplate;
 };
